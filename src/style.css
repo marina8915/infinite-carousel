@@ -1,3 +1,14 @@
-div {
-    color: red;
+h1 {
+   font-size: 24px;
+}
+
+img {
+    height: 225px;
+    width: auto;
+}
+.slider {
+    height: 225px;
+    width: 400px;
+    overflow: hidden;
+    display: inline-block;
 }

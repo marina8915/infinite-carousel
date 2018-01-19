@@ -79,9 +79,9 @@ __webpack_require__(4);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function component() {
-    var element = document.createElement('div');
+    var element = document.createElement('h1');
 
-    element.innerHTML = _lodash2.default.join(['Hello', 'webpack'], ' ');
+    element.innerHTML = _lodash2.default.join(['Infinite', 'carousel'], ' ');
 
     return element;
 }
@@ -17275,7 +17275,7 @@ exports = module.exports = __webpack_require__(6)(false);
 
 
 // module
-exports.push([module.i, "div {\n    color: red;\n}", ""]);
+exports.push([module.i, "h1 {\n   font-size: 24px;\n}\n\nimg {\n    height: 225px;\n    width: auto;\n}\n.slider {\n    height: 225px;\n    width: 400px;\n    overflow: hidden;\n    display: inline-block;\n}", ""]);
 
 // exports
 

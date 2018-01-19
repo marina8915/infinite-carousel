@@ -2,9 +2,9 @@ import _ from 'lodash';
 import './style.css';
 
 function component() {
-    var element = document.createElement('div');
+    var element = document.createElement('h1');
 
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+    element.innerHTML = _.join(['Infinite', 'carousel'], ' ');
 
     return element;
 }
