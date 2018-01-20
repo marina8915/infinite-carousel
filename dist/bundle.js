@@ -80,8 +80,26 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function component() {
     var element = document.createElement('h1');
-
     element.innerHTML = _lodash2.default.join(['Infinite', 'carousel'], ' ');
+
+    Array.prototype.forEach.call(document.getElementsByClassName('slider'), function (event) {
+        event.addEventListener('mousedown', function (event) {
+            var id = event.path[1].getAttribute('id');
+            var countSlide = document.getElementById(id).getElementsByTagName('img');
+            var items = countSlide.length;
+            var sliderWidth = items * 400;
+            document.getElementById(id).style.width = sliderWidth + 'px';
+            var slide = event.target || event.srcElement;
+            //let clientX = event.clientX;
+            document.onmousemove = function (e) {
+                slide.style.left = e.pageX + 'px';
+            };
+            document.onmouseup = document.onmouseout = function () {
+                document.onmousemove = null;
+                document.onmouseup = null;
+            };
+        });
+    });
 
     return element;
 }
