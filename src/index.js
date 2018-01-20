@@ -13,7 +13,7 @@ function component() {
             let sliderWidth = items * 400;
             document.getElementById(id).style.width = sliderWidth + 'px';
             let slide = event.target || event.srcElement;
-            //let clientX = event.clientX;
+            //slide.style.left = 0;
             document.onmousemove = function (e) {
                 slide.style.left = e.pageX + 'px';
             }

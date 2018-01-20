@@ -90,7 +90,7 @@ function component() {
             var sliderWidth = items * 400;
             document.getElementById(id).style.width = sliderWidth + 'px';
             var slide = event.target || event.srcElement;
-            //let clientX = event.clientX;
+            //slide.style.left = 0;
             document.onmousemove = function (e) {
                 slide.style.left = e.pageX + 'px';
             };
@@ -17293,7 +17293,7 @@ exports = module.exports = __webpack_require__(6)(false);
 
 
 // module
-exports.push([module.i, "h1 {\n   font-size: 24px;\n}\n\nimg {\n    height: 225px;\n    width: auto;\n}\n.slider {\n    height: 225px;\n    width: 400px;\n    overflow: hidden;\n    display: inline-block;\n}", ""]);
+exports.push([module.i, "h1 {\n   font-size: 24px;\n}\n\nimg {\n    height: 225px;\n    width: auto;\n    position: absolute;\n}\n.slider {\n    height: 225px;\n    width: 400px;\n    overflow: hidden;\n    display: inline-block;\n    position: relative;\n}", ""]);
 
 // exports
 

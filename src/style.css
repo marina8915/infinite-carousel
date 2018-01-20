@@ -5,10 +5,12 @@ h1 {
 img {
     height: 225px;
     width: auto;
+    position: absolute;
 }
 .slider {
     height: 225px;
     width: 400px;
     overflow: hidden;
     display: inline-block;
+    position: relative;
 }
