@@ -1,4 +1,4 @@
-# infinite-carousel
+# Infinite carousel
 
 response on clicks, drags and touches 
 
