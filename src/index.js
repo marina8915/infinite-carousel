@@ -1,30 +1,38 @@
-import _ from 'lodash';
-import './style.css';
+import _ from 'lodash'
+import './style.css'
 
 function component() {
-    var element = document.createElement('h1');
-    element.innerHTML = _.join(['Infinite', 'carousel'], ' ');
-
+    //output h1
+    var element = document.createElement('h1')
+    element.innerHTML = _.join(['Infinite', 'carousel'], ' ')
+    //array slider
     Array.prototype.forEach.call(document.getElementsByClassName('slider'), function (event) {
         event.addEventListener('mousedown', function (event) {
-            let id = event.path[1].getAttribute('id');
-            let countSlide = document.getElementById(id).getElementsByTagName('img');
-            let items = countSlide.length;
-            let sliderWidth = items * 400;
-            document.getElementById(id).style.width = sliderWidth + 'px';
-            let slide = event.target || event.srcElement;
-            //slide.style.left = 0;
+            //determination of slider id, slide
+            var id = event.path[1].getAttribute('id')
+            var slide = event.target || event.srcElement
+            //beginning of move
             document.onmousemove = function (e) {
-                slide.style.left = e.pageX + 'px';
+                slide.style.left = e.clientX + 'px'
+                console.log(e.clientX)
             }
-            document.onmouseup = document.onmouseout = function () {
-                document.onmousemove = null;
-                document.onmouseup = null;
+            //end of move
+            document.onmouseup = document.onmouseout = function (e) {
+                //check limit
+                var limits = {
+                    right: 200,
+                    left: 0
+                }
+                if (e.clientX > limits.right || e.clientX < limits.left) {
+                    document.getElementById(id).insertBefore(slide, document.getElementById(id).childNodes[0])
+                }
+                slide.style.left = 0 + 'px'
+                document.onmousemove = null
+                document.onmouseup = null
             }
         })
     })
-
-    return element;
+    return element
 }
 
-document.body.appendChild(component());
+document.body.appendChild(component())
