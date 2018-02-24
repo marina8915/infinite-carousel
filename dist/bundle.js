@@ -128,8 +128,6 @@ function component() {
                         //check if bias more then limit - change position images
                         var bias = slide.style.left.split('px');
                         var biasLeft = Math.abs(+bias[0]);
-                        //var diffDrag = Math.abs(start - e.clientX)
-                        console.log(start, limit, biasLeft);
                         if (biasLeft > limit) {
                             slide.classList.remove('active');
                             slide.style.transition = '';
