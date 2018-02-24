@@ -102,7 +102,9 @@ function component() {
         //mousedown for image
         event.addEventListener('mousedown', function (event) {
             if (event.path[1].getAttribute('id')) {
-                //determination of carousel, slide
+                //determination of start position, limit, carousel, slide
+                var start = event.target.getBoundingClientRect().x;
+                var limit = event.target.getBoundingClientRect().width / 2;
                 var carousel = document.getElementById(event.path[1].getAttribute('id'));
                 var slide = event.target || event.srcElement;
                 //assign the last element of slider class active
@@ -112,16 +114,25 @@ function component() {
                 if (slide.classList.contains('active')) {
                     //beginning of move
                     document.onmousemove = function (e) {
-                        slide.style.left = e.clientX + 'px';
+                        var drag = e.clientX - limit - start;
+                        if (drag > 0) {
+                            slide.style.transition = 'left 250ms ease-in all';
+                            slide.style.left = drag + 20 + 'px';
+                        } else if (drag < 0) {
+                            slide.style.transition = 'right 250ms ease-in all';
+                            slide.style.left = drag - 20 + 'px';
+                        }
                     };
                     //end of move
-                    document.onmouseup = document.onmouseout = function () {
+                    document.onmouseup = document.onmouseout = function (e) {
                         //check if bias more then limit - change position images
                         var bias = slide.style.left.split('px');
-                        var limit = 200;
-                        if (bias[0] > limit) {
-                            slide.style.left = 0 + 'px';
+                        var biasLeft = Math.abs(+bias[0]);
+                        //var diffDrag = Math.abs(start - e.clientX)
+                        console.log(start, limit, biasLeft);
+                        if (biasLeft > limit) {
                             slide.classList.remove('active');
+                            slide.style.transition = '';
                             carousel.insertBefore(slide, carousel.childNodes[0]);
                             //change indicator
                             var indicators = carousel.querySelector('ul.indicators').getElementsByTagName('li');
@@ -138,6 +149,7 @@ function component() {
                                 }
                             }
                         }
+                        slide.style.left = 0 + 'px';
                         document.onmousemove = null;
                         document.onmouseup = null;
                     };
